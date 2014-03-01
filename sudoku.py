@@ -53,13 +53,15 @@ class Sudoku(object):
         return self.__squares[i]
         
     def __update_squares(self):
+        squares = []
         for i in range(0, 9, 3):
             for j in range(0, 9, 3):
                 square = []
                 for row in self.__puzzle[i:i+3]:
                     for entry in row[j:j+3]:
                         square.append(entry)
-                self.__squares.append(square)
+                squares.append(square)
+        self.__squares = squares
 
 
 if __name__ == '__main__':
