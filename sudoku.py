@@ -48,6 +48,9 @@ class Sudoku(object):
     def set_entry(self, i, j, entry):
         self.__puzzle[i][j] = entry
     
+    def get_row(self, i):
+        return self.__puzzle[i]
+    
     def get_square(self, i):
         self.__update_squares()
         return self.__squares[i]
