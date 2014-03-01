@@ -19,6 +19,7 @@ class Sudoku(object):
     
     def __init__(self, filename):
         self.__puzzle = []
+        self.__squares = []
         self.__read(filename)
     
     def __str__(self):
@@ -40,6 +41,25 @@ class Sudoku(object):
         with open(filename, 'r+') as input:
             for line in input:
                 self.__puzzle.append(line.split())
+    
+    def get_entry(self, i, j):
+        return self.__puzzle[i][j]
+    
+    def set_entry(self, i, j, entry):
+        self.__puzzle[i][j] = entry
+    
+    def get_square(self, i):
+        self.__update_squares()
+        return self.__squares[i]
+        
+    def __update_squares(self):
+        for i in range(0, 9, 3):
+            for j in range(0, 9, 3):
+                square = []
+                for row in self.__puzzle[i:i+3]:
+                    for entry in row[j:j+3]:
+                        square.append(entry)
+                self.__squares.append(square)
 
 
 if __name__ == '__main__':

@@ -11,16 +11,5 @@ class SudokuSolver(object):
                 if entry != '_':
                     self.domain[i][j] = [entry]
     
-    #TODO: rows, columns, constraints
+    #TODO: constraints
     #TODO: search algorithm/backtracking/forward checking
-    
-    def get_squares(self):
-        squares = []
-        for i in range(0, 9, 3):
-            for j in range(0, 9, 3):
-                square = []
-                for row in self.puzzle[i:i+3]:
-                    for entry in row[j:j+3]:
-                        square.append(entry)
-                squares.append(square)
-        return squares
