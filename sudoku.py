@@ -18,14 +18,14 @@ class Sudoku(object):
     """
     
     def __init__(self, filename):
-        self.puzzle = []
-        self.read(filename)
+        self.__puzzle = []
+        self.__read(filename)
     
     def __str__(self):
         string = ''
         for i in range(9):
             for j in range(9):
-                string += '%s ' % self.puzzle[i][j]
+                string += '%s ' % self.__puzzle[i][j]
                 if j % 3 == 2 and j != 8:
                     string += '| '
                 if j == 8:
@@ -36,10 +36,10 @@ class Sudoku(object):
         
         return string
     
-    def read(self, filename):
+    def __read(self, filename):
         with open(filename, 'r+') as input:
             for line in input:
-                self.puzzle.append(line.split())
+                self.__puzzle.append(line.split())
 
 
 if __name__ == '__main__':
