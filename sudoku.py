@@ -51,6 +51,12 @@ class Sudoku(object):
     def get_row(self, i):
         return self.__puzzle[i]
     
+    def get_column(self, j):
+        column = []
+        for row in self.__puzzle:
+            column.append(row[j])
+        return column
+    
     def get_square(self, i):
         self.__update_squares()
         return self.__squares[i]
