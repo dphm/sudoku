@@ -1,5 +1,3 @@
-from sudokusolver import SudokuSolver
-
 class Sudoku(object):
     """3x3 Sudoku puzzle with the following format:
      |--------|-------|-------|-------|-------|
