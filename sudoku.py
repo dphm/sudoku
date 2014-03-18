@@ -43,32 +43,37 @@ class Sudoku(object):
         return string
     
     def __read(self, filename):
+        """Reads puzzle from a file into a 2D int list"""
         with open(filename, 'r+') as f:
             self.__puzzle = [[int(x) for x in line.split()] for line in f]
     
     def get_entry(self, i, j):
+        """Returns the (i, j)th entry"""
         return self.__puzzle[i][j]
     
-    def set_entry(self, i, j, entry):
-        self.__puzzle[i][j] = entry
+    def set_entry(self, i, j, value):
+        """Sets the (i, j)th entry to a given value"""
+        self.__puzzle[i][j] = value
 
     def blank_entry(self, i, j):
+        """Returns true if an entry is blank"""
         return self.get_entry(i, j) == 0
     
     def get_row(self, i):
+        """Returns the ith row"""
         return self.__puzzle[i]
     
     def get_column(self, j):
-        column = []
-        for row in self.__puzzle:
-            column.append(row[j])
-        return column
+        """Returns the jth column"""
+        return [row[j] for row in self.__puzzle]
     
     def get_square(self, i, j):
+        """Returns the (i, j)th square"""
         return map(lambda (x, y): self.get_entry(x + 3 * i, y + 3 * j),
                    self.__square_coords)
 
     def get_puzzle(self):
+        """Returns a copy of the puzzle"""
         return list(self.__puzzle)
 
 if __name__ == '__main__':
