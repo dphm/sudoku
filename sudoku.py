@@ -64,6 +64,13 @@ class Sudoku(object):
         """Returns true if an entry is blank"""
         return self.get_entry(i, j) == 0
     
+    def get_blank_coords(self):
+        """Returns the coordinates of the first blank entry"""
+        for i in range(9):
+            for j in range(9):
+                if self.blank_entry(i, j):
+                    return (i, j)
+    
     def get_row(self, i):
         """Returns the ith row"""
         return self.__puzzle[i]
@@ -81,7 +88,7 @@ class Sudoku(object):
         """Returns a copy of the puzzle"""
         return list(self.__puzzle)
     
-    def possible_values(self, i, j):
+    def get_possible_values(self, i, j):
         """Returns the possible values for the (i, j)th entry"""
         if self.blank_entry(i, j):
             values = set(range(1, 10))
