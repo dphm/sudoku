@@ -22,7 +22,7 @@ class Sudoku(object):
        Valid entries have a value between 1-9.
     """
     
-    def __init__(self, filename):
+    def __init__(self, filename='1.txt'):
         self.__puzzle = None
         self.__square_coords = [(i, j) for i in range(3) for j in range(3)]
         self.__read(filename)
@@ -72,5 +72,5 @@ class Sudoku(object):
         return list(self.__puzzle)
 
 if __name__ == '__main__':
-    s = Sudoku('sudoku1.txt')
+    s = Sudoku()
     print s
