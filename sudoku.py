@@ -15,6 +15,9 @@ class Sudoku(object):
          6 | _ _ _ | _ _ _ | _ _ _
          7 | _ _ _ | _ _ _ | _ _ _
          8 | _ _ _ | _ _ _ | _ _ _
+       
+       Blank entries have a value of 0.
+       Valid entries have a value between 1-9.
     """
     
     def __init__(self, filename):
@@ -40,7 +43,7 @@ class Sudoku(object):
     def __read(self, filename):
         with open(filename, 'r+') as input:
             for line in input:
-                self.__puzzle.append(line.split())
+                self.__puzzle.append(int(line.split()))
     
     def get_entry(self, i, j):
         return self.__puzzle[i][j]
