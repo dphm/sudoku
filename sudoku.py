@@ -98,8 +98,33 @@ class Sudoku(object):
             return values
         else:
             return [self.get_entry(i, j)]
+
+
+def solve(s):
+    """Return solved puzzle (or False if puzzle is impossible)"""
+    coords = s.get_blank_coords()
+    if coords == None:
+        # No blank entries remaining
+        return s
+   
+    values = s.get_possible_values(*coords)
+    for value in values:
+        # Set the first blank entry to a possible value
+        s.set_entry(coords[0], coords[1], value)
         
+        # Recursively solve puzzle from current configuration
+        result = solve(s)
+        if result:
+            return result
+        else:
+            # Undo last move
+            s.set_entry(coords[0], coords[1], 0)
+    
+    # Puzzle is impossible from current configuration
+    return False
+
 
 if __name__ == '__main__':
     s = Sudoku()
     print s
+    print solve(s)
