@@ -26,6 +26,8 @@ class Sudoku(object):
         self.__puzzle = None
         self.__square_coords = [(i, j) for i in range(3) for j in range(3)]
         self.__read(filename)
+        self.__given_coords = [(i, j) for i in range(9) for j in range(9)
+                               if self.__puzzle[i][j] != 0]
     
     def __str__(self):
         string = ''
@@ -53,6 +55,9 @@ class Sudoku(object):
     
     def set_entry(self, i, j, value):
         """Sets the (i, j)th entry to a given value"""
+        if (i, j) in self.__given_coords:
+            raise ValueError("Trying to change original puzzle value")
+        
         self.__puzzle[i][j] = value
 
     def blank_entry(self, i, j):
@@ -75,6 +80,18 @@ class Sudoku(object):
     def get_puzzle(self):
         """Returns a copy of the puzzle"""
         return list(self.__puzzle)
+    
+    def possible_values(self, i, j):
+        """Returns the possible values for the (i, j)th entry"""
+        if self.blank_entry(i, j):
+            values = set(range(1, 10))
+            values -= set(self.get_row(i))
+            values -= set(self.get_column(j))
+            values -= set(self.get_square(i / 3, j / 3))
+            return values
+        else:
+            return [self.get_entry(i, j)]
+        
 
 if __name__ == '__main__':
     s = Sudoku()
