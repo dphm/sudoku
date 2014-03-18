@@ -21,7 +21,7 @@ class Sudoku(object):
     """
     
     def __init__(self, filename):
-        self.__puzzle = []
+        self.__puzzle = None
         self.__squares = []
         self.__read(filename)
     
@@ -41,9 +41,8 @@ class Sudoku(object):
         return string
     
     def __read(self, filename):
-        with open(filename, 'r+') as input:
-            for line in input:
-                self.__puzzle.append(int(line.split()))
+        with open(filename, 'r+') as f:
+            self.__puzzle = [[int(x) for x in line.split()] for line in f]
     
     def get_entry(self, i, j):
         return self.__puzzle[i][j]
