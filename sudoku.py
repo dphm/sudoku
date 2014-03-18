@@ -49,6 +49,9 @@ class Sudoku(object):
     
     def set_entry(self, i, j, entry):
         self.__puzzle[i][j] = entry
+
+    def blank_entry(self, i, j):
+        return self.get_entry(i, j) == 0
     
     def get_row(self, i):
         return self.__puzzle[i]
@@ -74,6 +77,8 @@ class Sudoku(object):
                 squares.append(square)
         self.__squares = squares
 
+    def get_puzzle(self):
+        return list(self.__puzzle)
 
 if __name__ == '__main__':
     s = Sudoku('sudoku1.txt')
