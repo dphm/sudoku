@@ -21,7 +21,7 @@ A blank square is represented by a `0`.
 
 Output
 ======
-Prints the unsolved puzzle, and the prints solution if it is possible. Otherwise, prints false.
+Prints the unsolved puzzle, and the prints solution if it is possible. Otherwise, prints `False`.
 
     0 0 6 | 0 3 0 | 0 0 0 
     0 0 0 | 2 0 1 | 8 0 5 
