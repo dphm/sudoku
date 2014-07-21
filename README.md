@@ -17,7 +17,7 @@ A textfile with the following format:
     0 6 5 0 0 7 0 0 4
     7 8 4 0 0 0 0 0 9
 
-A blank square is represented by a 0.
+A blank square is represented by a `0`.
 
 Output
 ======
